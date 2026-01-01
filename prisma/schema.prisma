@@ -31,6 +31,7 @@ model User {
   firstName String
   lastName  String
   email     String   @unique
+  updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 
   applications Application[]
@@ -54,7 +55,7 @@ model Application {
 
   notes    Note[]
   contacts Contact[]
-
+  updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
 
@@ -63,6 +64,7 @@ model Note {
   applicationID String
   application   Application @relation(fields: [applicationID], references: [id], onDelete: Cascade)
   text          String
+  updatedAt     DateTime    @updatedAt
   createdAt     DateTime    @default(now())
 }
 
@@ -76,5 +78,6 @@ model Contact {
   role          String?
   linkedin      String?
   notes         String?
+  updatedAt     DateTime    @updatedAt
   createdAt     DateTime    @default(now())
 }
