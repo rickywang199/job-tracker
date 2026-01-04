@@ -16,7 +16,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Application" (
     "id" TEXT NOT NULL,
-    "userID" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
     "company" TEXT NOT NULL,
     "role" TEXT NOT NULL,
     "location" TEXT,
@@ -61,7 +61,7 @@ CREATE TABLE "Contact" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "Application" ADD CONSTRAINT "Application_userID_fkey" FOREIGN KEY ("userID") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Application" ADD CONSTRAINT "Application_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Note" ADD CONSTRAINT "Note_applicationID_fkey" FOREIGN KEY ("applicationID") REFERENCES "Application"("id") ON DELETE CASCADE ON UPDATE CASCADE;
