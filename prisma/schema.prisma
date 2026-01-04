@@ -34,7 +34,27 @@ model User {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 
+  accounts     Account[]
+  sessions     Session[]
   applications Application[]
+}
+
+model Account {
+  id                String @id @default(cuid())
+  userID            String
+  type              String
+  provider          String
+  providerAccountID String
+
+  user User @relation(fields: [userID], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountID])
+}
+
+model Session {
+  id     String  @id @default(cuid())
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
 
 model Application {
@@ -53,10 +73,10 @@ model Application {
   appliedAt DateTime
   salary    Int?
 
-  notes    Note[]
-  contacts Contact[]
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
+  notes     Note[]
+  contacts  Contact[]
+  updatedAt DateTime  @updatedAt
+  createdAt DateTime  @default(now())
 }
 
 model Note {
