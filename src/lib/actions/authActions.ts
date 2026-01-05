@@ -3,9 +3,9 @@
 import { signIn, signOut } from "@/auth";
 
 export async function login() {
-  await signIn("github", { callbackUrl: "/" });
+  await signIn("github", { redirectTo: "/" });
 }
 
 export async function logout() {
-  await signOut({ callbackUrl: "/" });
+  await signOut({ redirectTo: "/" });
 }
