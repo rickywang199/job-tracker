@@ -1,9 +1,11 @@
-import { login } from "@/lib/actions/authActions";
+import {auth} from "@/auth";
+import {SignInButton} from "./components/sign-in-button";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
+  console.log (session) ;
   return (
-    <form action={login}>
-      <button type="submit">Sign in with GitHub</button>
-    </form>
+    <div> {""} </div>
+    
   );
 }
